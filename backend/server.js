@@ -12,7 +12,7 @@ require('dotenv').config()
 const LOCAL_DB = process.env.DB_LOCAL,
       ATLAS_DB = process.env.DB_ATLAS;
 
-mongoose.connect(ATLAS_DB, {
+mongoose.connect(LOCAL_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useFindAndModify: false,

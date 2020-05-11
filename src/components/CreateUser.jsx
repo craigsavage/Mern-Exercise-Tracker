@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 function CreateUser() {
     const [newUser, setNewUser] = useState({
@@ -12,20 +13,25 @@ function CreateUser() {
 
     function onSubmit(event) {
         event.preventDefault();
-        setNewUser({ username: "" })
-        console.log(newUser)
+        setNewUser({ username: "" });
+        document.querySelector(".usernameInput").focus();
+
+        console.log(newUser);
+
+        // post username to backend to be added to database
+        axios.post('http://localhost:5000/users/add', newUser)
+            .then(res => console.log(res.data));
     }
 
     return (
         <div>
-            <h3>{JSON.stringify(newUser)}}</h3>
             <h3>Create New User</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label>Username: </label>
                     <input type="text"
                         required
-                        className="form-control"
+                        className="form-control usernameInput"
                         value={newUser.username}
                         onChange={onChangeUsername}
                     />

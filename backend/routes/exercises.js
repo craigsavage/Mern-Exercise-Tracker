@@ -28,7 +28,7 @@ router.route('/:id')
         Exercise.deleteOne({ _id: req.params.id })
             .then(deletedExercise => {
                 console.log(deletedExercise);
-                return res.redirect('/exercises');
+                // return res.redirect('/exercises');
             })
             .catch(err => res.status(400).json(`Error: ${err}`));
     })
